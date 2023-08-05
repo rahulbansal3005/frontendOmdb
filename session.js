@@ -27,7 +27,7 @@ async function handleLogin() {
     localStorage.setItem("tokenExpiration", tokenExpiration);
     localStorage.setItem("token", data.token);
 
-    window.location.href = "/frontend/index.html";
+    window.location.href = "/index.html";
   } catch (error) {
     console.error("Error:", error);
   }
@@ -51,7 +51,7 @@ async function handleSignup() {
     const data = await response.json();
     console.log(data);
 
-    window.location.href = "/frontend/login.html";
+    window.location.href = "/login.html";
   } catch (error) {
     console.error("Error:", error);
   }
