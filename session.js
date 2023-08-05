@@ -1,4 +1,4 @@
-const apiURL = "https://omdb-pahi.onrender.com";
+const apiURL = "https://omdbrecent.onrender.com";
 
 function goToSignup() {
   window.location.href = "signup.html";
@@ -23,6 +23,8 @@ async function handleLogin() {
     const response = await fetch(`${apiURL}/api/login`, requestOptions);
     const data = await response.json();
 
+    const tokenExpiration = data.exp * 1000; // Convert to milliseconds
+    localStorage.setItem("tokenExpiration", tokenExpiration);
     localStorage.setItem("token", data.token);
 
     window.location.href = "/frontend/index.html";

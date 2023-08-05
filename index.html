@@ -14,19 +14,26 @@
             <li><a href="get_playlist.html">Get Playlist</a></li>
         </ul>
     </nav>
-
-    <!-- <h1>Movie Search</h1>
-    <input type="text" id="searchInput">
-    <button onclick="searchMovies()">Search</button>
-    <div id="movieResults"></div> -->
-
-    <!-- <h1>Create Playlist</h1>
-    <input type="text" id="playlistName" placeholder="Playlist Name">
-    <input type="checkbox" id="isPublic"> Public Playlist
-    <button onclick="createPlaylist()">Create Playlist</button>
-
-    <h1>My Playlists</h1>
-    <ul id="playlistList"></ul> -->
 </body>
-<script src="script.js"></script>
+<script>
+    function checkTokenValidity() {
+        const token = localStorage.getItem("token");
+        const tokenExpiration = localStorage.getItem("tokenExpiration");
+
+        if (!token || !tokenExpiration) {
+            // Token or expiration time is missing, redirect to login page
+            window.location.href = "/frontend/login.html";
+            return;
+        }
+
+        const currentTimestamp = Date.now();
+        if (currentTimestamp > tokenExpiration) {
+            // Token has expired, redirect to login page
+            localStorage.removeItem("token");
+            localStorage.removeItem("tokenExpiration");
+            window.location.href = "/frontend/login.html";
+        }
+    }
+    checkTokenValidity();
+</script>
 </html>
