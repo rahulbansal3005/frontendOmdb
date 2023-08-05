@@ -22,7 +22,7 @@
 
         if (!token || !tokenExpiration) {
             // Token or expiration time is missing, redirect to login page
-            window.location.href = "/login.html";
+            window.location.href = "login.html";
             return;
         }
 
@@ -31,7 +31,7 @@
             // Token has expired, redirect to login page
             localStorage.removeItem("token");
             localStorage.removeItem("tokenExpiration");
-            window.location.href = "/login.html";
+            window.location.href = "login.html";
         }
     }
     checkTokenValidity();
