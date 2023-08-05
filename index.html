@@ -21,18 +21,17 @@
         const tokenExpiration = localStorage.getItem("tokenExpiration");
 
         if (!token || !tokenExpiration) {
-            // Token or expiration time is missing, redirect to login page
-            window.location.href = "login.html";
+            const loginUrl = window.location.pathname.replace("index.html", "login.html");
+            window.location.href = loginUrl;
             return;
         }
 
         const currentTimestamp = Date.now();
         if (currentTimestamp > tokenExpiration) {
-            // Token has expired, redirect to login page
             localStorage.removeItem("token");
             localStorage.removeItem("tokenExpiration");
-            window.location.href = "login.html";
-        }
+            const loginUrl = window.location.pathname.replace("index.html", "login.html");
+            window.location.href = loginUrl;        }
     }
     checkTokenValidity();
 </script>

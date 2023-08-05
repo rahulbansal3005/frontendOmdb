@@ -26,8 +26,11 @@ async function handleLogin() {
     const tokenExpiration = data.exp * 1000; // Convert to milliseconds
     localStorage.setItem("tokenExpiration", tokenExpiration);
     localStorage.setItem("token", data.token);
-
-    window.location.href = "index.html";
+    const loginUrl = window.location.pathname.replace(
+      "login.html",
+      "index.html"
+    );
+    window.location.href = loginUrl;
   } catch (error) {
     console.error("Error:", error);
   }
@@ -51,7 +54,11 @@ async function handleSignup() {
     const data = await response.json();
     console.log(data);
 
-    window.location.href = "login.html";
+    const loginUrl = window.location.pathname.replace(
+      "signup.html",
+      "login.html"
+    );
+    window.location.href = loginUrl;
   } catch (error) {
     console.error("Error:", error);
   }
